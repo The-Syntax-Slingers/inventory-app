@@ -7,6 +7,20 @@ import apiURL from '../api';
 export const App = () => {
 
 	const [sauces, setSauces] = useState([]);
+	const defaulView = {
+		page: "home",
+		items: [],
+		slug: null,
+		item: null,
+		itemDraft: {
+			name: "",
+			price: 0,
+			description: "",
+			imageLink: "" 
+		}
+	}
+
+	const [view, setView] = useState(defaulView)
 
 	async function fetchSauces(){
 		try {
@@ -23,6 +37,17 @@ export const App = () => {
 		fetchSauces();
 	}, []);
 
+	function loader(){
+		switch (view.page){
+			//home page
+			case 'home':
+				console.log("you are on the home view")
+				return(<>
+					<h2>Items</h2>
+					<Items items={view.items}/>
+				</>);
+		}
+	}
 	return (
 		<main>	
       <h1>Sauce Store</h1>

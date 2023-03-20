@@ -10,6 +10,7 @@ import apiURL from '../api';
 export const App = () => {
 //state variables and defaults
 	const [sauces, setSauces] = useState([]);
+
 	const defaultItem = {
 			name: "Item Name",
 			price: 20,
@@ -45,9 +46,13 @@ export const App = () => {
 
 	function handleHomeClick(){
 		alert("you have clicked the home button, functionality not written!")
+		//fetch and set pages-> changes view to load 
 	}
 	function handleNewItemClick(){
 		alert("you have clicked the new item button, functionality not written!")
+	}
+	function handleItemClick(){
+		alert("you have clicked on the item, functionality not written!")
 	}
 //renders
 	//reload
@@ -63,7 +68,7 @@ export const App = () => {
 				//debugging tool
 				console.log("you are on the home page. View is; ", view);
 				return(<>
-					<Items items={view.items}/>
+					<Items items={view.items} handleClick={handleItemClick} />
 				</>);
 		}
 	}

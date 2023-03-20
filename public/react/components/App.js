@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { SaucesList } from './SaucesList';
 import {Items} from './Items'
+import { Header } from './Header';
 
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
 
-export const App = () => {
 
+export const App = () => {
+//state variables and defaults
 	const [sauces, setSauces] = useState([]);
 	const defaultItem = {
 			name: "Item Name",
@@ -26,8 +28,10 @@ export const App = () => {
 			imageLink: "" 
 		}
 	}
-
 	const [view, setView] = useState(defaultView)
+	
+
+//functions
 	//using this to test.
 	async function fetchSauces(){
 		try {
@@ -39,27 +43,34 @@ export const App = () => {
 		}
 	}
 
+	function handleHomeClick(){
+		alert("you have clicked the home button, functionality not written!")
+	}
+	function handleNewItemClick(){
+		alert("you have clicked the new item button, functionality not written!")
+	}
+//renders
+	//reload
 	useEffect(() => {
 		fetchSauces();
 	}, []);
 
-	function loader(view){
+	//loader choses which 'pages' to render.
+	function Loader({view}){
 		switch (view.page){
-			//home page
+			//home page logic
 			case 'home':
-				console.log("you are on the home view")
-				console.log(view);
-
+				//debugging tool
+				console.log("you are on the home page. View is; ", view);
 				return(<>
-					<h2>Items</h2>
 					<Items items={view.items}/>
 				</>);
 		}
 	}
 	return (
-		<main>	
-      <h1>Sauce Store</h1>
-			{loader(view)}
+		<main>
+			<Header view={view} navClicks={{home: handleHomeClick, newItem: handleNewItemClick}} />	
+			<Loader view={view}/>
 		</main>
 	)
 }

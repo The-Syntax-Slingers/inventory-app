@@ -1,8 +1,9 @@
 import React from "react";
 
-export function Card({item}){
+//the Card renders teh name, price, description, and CardImage of one item
+export function Card({item,handleClick}){
 
-    return(<div className="card">
+    return(<div className="card" onClick={handleClick} >
         <h2>{item.name}</h2>
         <h3>{["$ ",item.price].join(" ")}</h3>
         <p>{item.description}</p>
@@ -17,3 +18,5 @@ export function CardImage({imageLink}){
         <img src={imageLink} width={width} height={height} />
     );
 }
+
+

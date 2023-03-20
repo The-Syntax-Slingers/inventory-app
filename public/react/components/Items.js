@@ -1,10 +1,9 @@
 import React from "react";
 import { Card } from "./MiniComponents";
 
-export function Items({items}){
+export function Items({items,handleClick}){
     console.log(items)
     return(<div>
-        <h1>items list needs to be built.</h1>
-        {items.map((item, idx) => <Card item={item} key={idx}/>)}
+        {items.map((item, idx) => <Card handleClick={handleClick} item={item} key={idx}/>)}
     </div>);
 }

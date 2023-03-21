@@ -14,8 +14,11 @@ router.get("/", async (req, res, next) => {
 });
 
 router.get("/:id", async (req, res, next) => {
+  const id = req.params.id;
+  if (isNaN(id) || id <= 0)
+    res.status(400)
   try {
-    const item = await Item.findByPk(req.params.id);
+    const item = await Item.findByPk(id);
     res.send(item);
   } catch (error) {
     next(error);

@@ -22,26 +22,26 @@ export const App = () => {
 	})*/
 
 	const defaultItem = {
-			name: "Item Name",
+			title: "Item Name",
 			price: 20,
 			description: "This item is a test item, for debugging and testing. User should never see it.",
-			imageLink: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
+			image: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
+	}
+	const emptyDraft = {
+			title: "",
+			price: 0,
+			description: "",
+			image: "" 
 	}
 	
 	const defaultView = {
 		page: "home",
-		items: [defaultItem,defaultItem,defaultItem],
+		items: [],
 		slug: null,
 		item: null,
-		itemDraft: {
-			name: "",
-			price: 0,
-			description: "",
-			imageLink: "" 
-		}
+		itemDraft: emptyDraft
 	}
 	const [view, setView] = useState(defaultView)
-	
 
 //functions
 	async function fetchSauces(){
@@ -54,11 +54,17 @@ export const App = () => {
 		}
 	}
 
+	async function fetchAndSetItems(){
+		try{
+			const response = await fetch(`${apiURL}/items`);
+			const itemsData = await response.json();
+			setView({...defaultView, items: itemsData});
+		}catch(err){
+			console.error(err);
+		}
+	}
 	function handleHomeClick(){
-		//call to fetch all iitems goes here; should be the function that gets called by onEffect.
-		console.log("home was clicked, needs fetch")
-		//delete when fetch is done.
-		setView({...view, page: "home"});
+		fetchAndSetItems()
 	}
 
 	function handleNewItemClick(){
@@ -68,10 +74,10 @@ export const App = () => {
 	function handleItemClick(event,slug){
 		//fetch request to get the single item goes here
 		setView({...view, page: "item", item: {
-			name: "Item #0",
+			title: "Item #0",
 			price: 20,
 			description: "Test item for single view; when fetch is written this will be deleted.",
-			imageLink: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
+			image: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
 			}
 		})
 		console.log("You have clicked on ", event.target.parentNode, ". Needs fetch");
@@ -80,6 +86,7 @@ export const App = () => {
 	//reload
 	useEffect(() => {
 		// fetchSauces();
+		fetchAndSetItems();
 	}, []);
 
 	const handleSubmit = async (event) => {

@@ -4,10 +4,10 @@ import React from "react";
 export function Card({item,handleClick}){
 
     return(<div className="card" onClick={(event)=>handleClick(event,item.slug)} >
-        <h2>{item.name}</h2>
+        <h2>{item.title}</h2>
         <h3>{["$ ",item.price].join(" ")}</h3>
         <p>{item.description}</p>
-        <CardImage imageLink={item.imageLink}/>
+        <CardImage imageLink={item.image}/>
     </div>);
 }
 
@@ -21,11 +21,11 @@ export function CardImage({imageLink}){
 
 export function SingleItem({item}){
     return(<main>
-        <h1>{item.name}</h1>
+        <h1>{item.title}</h1>
         <article>
             <h3>{["$ ",item.price].join(" ")}</h3>
             <p>{item.description}</p>
-            <CardImage imageLink={item.imageLink}/>
+            <img src={item.image}/>
         </article>
 
     </main>);

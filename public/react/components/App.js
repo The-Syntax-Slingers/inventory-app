@@ -19,17 +19,18 @@ export const App = () => {
 			description: "This item is a test item, for debugging and testing. User should never see it.",
 			image: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
 	}
+	const emptyDraft = {
+			title: "",
+			price: 0,
+			description: "",
+			image: "" 
+	}
 	const defaultView = {
 		page: "home",
 		items: [],
 		slug: null,
 		item: null,
-		itemDraft: {
-			title: "",
-			price: 0,
-			description: "",
-			image: "" 
-		}
+		itemDraft: emptyDraft
 	}
 	const [view, setView] = useState(defaultView)
 

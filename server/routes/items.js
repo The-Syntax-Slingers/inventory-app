@@ -23,7 +23,7 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.post("/",
-  [check("name").not().isEmpty().trim()],
+  [check("title").not().isEmpty().trim()],
   [check("image").not().isEmpty().trim()],
   [check("description").not().isEmpty().trim()],
   [check("price").isNumeric()], //.min(0.00)
@@ -53,7 +53,7 @@ router.delete("/:id", async (req, res, next) => {
 });
 
 router.put("/:id",
-  [check("name").not().isEmpty().trim()],
+  [check("title").not().isEmpty().trim()],
   [check("image").not().isEmpty().trim()],
   [check("description").not().isEmpty().trim()],
   [check("price").isNumeric()], //.min(0.00)

@@ -3,7 +3,7 @@ const router = express.Router();
 const { Item } = require("../models");
 const { check, validationResult } = require("express-validator");
 
-// GET /item
+// GET /items
 router.get("/", async (req, res, next) => {
   try {
     const items = await Item.findAll();
@@ -21,7 +21,6 @@ router.get("/:id", async (req, res, next) => {
     next(error);
   }
 });
-
 
 router.post("/",
   [check("name").not().isEmpty().trim()],

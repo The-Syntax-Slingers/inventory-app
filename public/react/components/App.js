@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { SaucesList } from './SaucesList';
 import {Items} from './Items'
 import { Header } from './Header';
+import { SingleItem } from './MiniComponents';
 
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
+
 
 
 export const App = () => {
@@ -33,7 +35,6 @@ export const App = () => {
 	
 
 //functions
-	//using this to test.
 	async function fetchSauces(){
 		try {
 			const response = await fetch(`${apiURL}/sauces`);
@@ -51,13 +52,21 @@ export const App = () => {
 	function handleNewItemClick(){
 		alert("you have clicked the new item button, functionality not written!")
 	}
-	function handleItemClick(){
-		alert("you have clicked on the item, functionality not written!")
+	function handleItemClick(event,slug){
+		//fetch request to get the single item goes here
+		setView({...view, page: "item", item: {
+			name: "Item #0",
+			price: 20,
+			description: "Test item for single view; when fetch is written this will be deleted.",
+			imageLink: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
+			}
+		})
+		console.log("You have clicked on ", event.target.parentNode, ". functionality in progress");
 	}
 //renders
 	//reload
 	useEffect(() => {
-		fetchSauces();
+		// fetchSauces();
 	}, []);
 
 	//loader choses which 'pages' to render.
@@ -69,6 +78,12 @@ export const App = () => {
 				console.log("you are on the home page. View is; ", view);
 				return(<>
 					<Items items={view.items} handleClick={handleItemClick} />
+				</>);
+			//single item logic
+			case 'item':
+				console.log("you are on single item page, the view is: ",view)
+				return(<>
+					<SingleItem item={view.item} />
 				</>);
 		}
 	}

@@ -46,8 +46,10 @@ export const App = () => {
 	}
 
 	function handleHomeClick(){
-		alert("you have clicked the home button, functionality not written!")
-		//fetch and set pages-> changes view to load 
+		//call to fetch all iitems goes here; should be the function that gets called by onEffect.
+		console.log("home was clicked, needs fetch")
+		//delete when fetch is done.
+		setView({...view, page: "home"});
 	}
 	function handleNewItemClick(){
 		alert("you have clicked the new item button, functionality not written!")
@@ -61,7 +63,7 @@ export const App = () => {
 			imageLink: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
 			}
 		})
-		console.log("You have clicked on ", event.target.parentNode, ". functionality in progress");
+		console.log("You have clicked on ", event.target.parentNode, ". Needs fetch");
 	}
 //renders
 	//reload

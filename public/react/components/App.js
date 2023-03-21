@@ -49,7 +49,7 @@ export const App = () => {
 		try{
 			const response = await fetch(`${apiURL}/items`);
 			const itemsData = await response.json();
-			setView({...defaultView, items: itemsData, itemDraft: {...view.itemDraft}});
+			setView({...defaultView, items: itemsData});
 		}catch(err){
 			console.error(err);
 		}

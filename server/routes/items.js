@@ -27,7 +27,7 @@ router.post("/",
   [check("name").not().isEmpty().trim()],
   [check("image").not().isEmpty().trim()],
   [check("description").not().isEmpty().trim()],
-  [check("price").isNumeric().min(0.00)],
+  [check("price").isNumeric()], //.min(0.00)
   [check("category").not().isEmpty().trim()],
   async (req, res, next) => {
     try {
@@ -57,7 +57,7 @@ router.update("/:id",
   [check("name").not().isEmpty().trim()],
   [check("image").not().isEmpty().trim()],
   [check("description").not().isEmpty().trim()],
-  [check("price").isNumeric().min(0.00)],
+  [check("price").isNumeric()], //.min(0.00)
   [check("category").not().isEmpty().trim()],
   async (req, res, next) => {
     try {

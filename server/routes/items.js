@@ -37,7 +37,7 @@ router.post("/",
         return
       }
       const item = await Item.create(req.body);
-      res.send(await item.findAll());
+      res.send(await Item.findAll());
     } catch (error) {
       next(error);
     }

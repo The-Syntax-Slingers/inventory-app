@@ -8,7 +8,6 @@ import { SingleItem } from './MiniComponents';
 import apiURL from '../api';
 
 
-
 export const App = () => {
 //state variables and defaults
 	const [sauces, setSauces] = useState([]);
@@ -37,7 +36,7 @@ export const App = () => {
 	const defaultView = {
 		page: "home",
 		items: [],
-		slug: null,
+		id: null,
 		item: null,
 		itemDraft: emptyDraft
 	}
@@ -71,15 +70,14 @@ export const App = () => {
 		alert("you have clicked the new item button, functionality not written!")
 	}
 
-	function handleItemClick(event,slug){
-		//fetch request to get the single item goes here
-		setView({...view, page: "item", item: {
-			title: "Item #0",
-			price: 20,
-			description: "Test item for single view; when fetch is written this will be deleted.",
-			image: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
-			}
-		})
+	async function handleItemClick(event,id){
+		try{
+			const response = await fetch(`${apiURL}/items/${id}`);
+			const itemData = await response.json();
+			setView({...view,page: "item", id: id, item: itemData});
+		}catch(err){
+			console.error(err);
+		}
 		console.log("You have clicked on ", event.target.parentNode, ". Needs fetch");
 	}
 //renders
@@ -145,31 +143,12 @@ Form Add item:
 
 					</>
 				)
-			//update item logic
-			case 'update':
-				return(
-					<>
-
-					</>
-				)
-			//delete item logic
-			case 'delete':
-				return(
-					<>
-
-					</>
-				)
 		}
 	}
 	return (
 		<main>	
 			<Header view={view} navClicks={{home: handleHomeClick, newItem: handleNewItemClick}} />	
 			<Loader view={view}/>
-
-			<h1>Sauce Store</h1>
-					<h2>All things 🔥</h2>
-					<SaucesList sauces={sauces} />
-
 		</main>
 	)
 }

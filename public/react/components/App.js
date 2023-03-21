@@ -27,6 +27,7 @@ export const App = () => {
 			description: "This item is a test item, for debugging and testing. User should never see it.",
 			imageLink: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
 	}
+	
 	const defaultView = {
 		page: "home",
 		items: [defaultItem,defaultItem,defaultItem],

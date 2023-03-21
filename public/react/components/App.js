@@ -13,12 +13,21 @@ export const App = () => {
 //state variables and defaults
 	const [sauces, setSauces] = useState([]);
 
+	/*const [addForm, setAddForm] = useState({
+		name: '',
+		description: '',
+		price: '',
+		category: '',
+		image: ''
+	})*/
+
 	const defaultItem = {
 			name: "Item Name",
 			price: 20,
 			description: "This item is a test item, for debugging and testing. User should never see it.",
 			imageLink: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
 	}
+	
 	const defaultView = {
 		page: "home",
 		items: [defaultItem,defaultItem,defaultItem],
@@ -51,9 +60,11 @@ export const App = () => {
 		//delete when fetch is done.
 		setView({...view, page: "home"});
 	}
+
 	function handleNewItemClick(){
 		alert("you have clicked the new item button, functionality not written!")
 	}
+
 	function handleItemClick(event,slug){
 		//fetch request to get the single item goes here
 		setView({...view, page: "item", item: {
@@ -71,6 +82,39 @@ export const App = () => {
 		// fetchSauces();
 	}, []);
 
+	const handleSubmit = async (event) => {
+		event.preventDefault()
+
+		const response = await fetch('url', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				name: FormData.name
+			})
+
+		})
+		const data = await response.json()
+	}
+
+	/*const handleChange = event => {
+		const {name, value} = event.target	
+		//set the form data 
+		setAddForm(previousState => ({
+			...previousState,
+			[name]: value
+		}))
+	}*/
+	/* 
+Form Add item:
+	Name
+	Description
+	Price
+	Category
+	Image
+	*/
+
 	//loader choses which 'pages' to render.
 	function Loader({view}){
 		switch (view.page){
@@ -87,12 +131,38 @@ export const App = () => {
 				return(<>
 					<SingleItem item={view.item} />
 				</>);
+			//add item logic
+			case 'add':
+				return(
+					<>
+
+					</>
+				)
+			//update item logic
+			case 'update':
+				return(
+					<>
+
+					</>
+				)
+			//delete item logic
+			case 'delete':
+				return(
+					<>
+
+					</>
+				)
 		}
 	}
 	return (
-		<main>
+		<main>	
 			<Header view={view} navClicks={{home: handleHomeClick, newItem: handleNewItemClick}} />	
 			<Loader view={view}/>
+
+			<h1>Sauce Store</h1>
+					<h2>All things 🔥</h2>
+					<SaucesList sauces={sauces} />
+
 		</main>
 	)
 }

@@ -21,7 +21,7 @@ export const App = () => {
 	}
 	const defaultView = {
 		page: "home",
-		items: [defaultItem,defaultItem,defaultItem],
+		items: [],
 		slug: null,
 		item: null,
 		itemDraft: {
@@ -32,7 +32,6 @@ export const App = () => {
 		}
 	}
 	const [view, setView] = useState(defaultView)
-	
 
 //functions
 	async function fetchSauces(){
@@ -45,7 +44,7 @@ export const App = () => {
 		}
 	}
 
-	async function fetchAndSetPages(){
+	async function fetchAndSetItems(){
 		try{
 			const response = await fetch(`${apiURL}/items`);
 			const itemsData = await response.json();
@@ -55,7 +54,7 @@ export const App = () => {
 		}
 	}
 	function handleHomeClick(){
-		fetchAndSetPages()
+		fetchAndSetItems()
 	}
 	function handleNewItemClick(){
 		alert("you have clicked the new item button, functionality not written!")
@@ -75,7 +74,7 @@ export const App = () => {
 	//reload
 	useEffect(() => {
 		// fetchSauces();
-		fetchAndSetPages();
+		fetchAndSetItems();
 	}, []);
 
 	//loader choses which 'pages' to render.

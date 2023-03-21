@@ -115,36 +115,40 @@ Form Add item:
 	}
 	return (
 		<main>	
-      <h1>Sauce Store</h1>
-			<h2>All things 🔥</h2>
-			<SaucesList sauces={sauces} />
+			<Header view={view} navClicks={{home: handleHomeClick, newItem: handleNewItemClick}} />	
+			<Loader view={view}/>
 
-		<div>
-			<h1>Add an Item</h1>
-			<form onSubmit={handleSubmit}>
-				<div>
-					Name <br/>
-					<input />
-				</div>
-				<div>
-					Description <br/>
-					<input/>
-				</div>
-				<div>
-					Price <br/>
-					<input />
-				</div>
-				<div>
-					Category <br/>
-					<input/>
-				</div>
-				<div>
-					Image <br/>
-					<input/>
-				</div>
-				<button>Submit</button>
-			</form>
-		</div>
+			<h1>Sauce Store</h1>
+					<h2>All things 🔥</h2>
+					<SaucesList sauces={sauces} />
+
+			<div>
+				<h1>Add an Item</h1>
+				<form>
+					<div>
+						Name <br/>
+						<input />
+					</div>
+					<div>
+						Description <br/>
+						<input/>
+					</div>
+					<div>
+						Price <br/>
+						<input />
+					</div>
+					<div>
+						Category <br/>
+						<input/>
+					</div>
+					<div>
+						Image <br/>
+						<input/>
+					</div>
+					<button>Submit</button>
+				</form>
+			</div>
+
 		</main>
 	)
 }

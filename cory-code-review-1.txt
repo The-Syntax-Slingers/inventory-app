@@ -1,0 +1,29 @@
+Hey Syntax Slingers! :) Popping in to give some initial feedback on the codebase!
+
+Readability
+------------------------------------------------------------------------------------------
+[yes] New code is syntactic - everything clearly named (files, objects, functions, variables)
+[yes] Clear, concise comments that describes why code was included rather than what it does
+[yes] No redundant comments
+
+Security
+------------------------------------------------------------------------------------------
+[n/a] All secret information is stored securely (environmental variables, github secrets)
+[n/a] User information protected appropriately (encryption, auth)
+
+Stability
+------------------------------------------------------------------------------------------
+[yes!] Errors are handled where necessary (try/catch blocks, console errors, status codes)
+[n/a] Appropriate test coverage and reporting (unit, end-to-end, accessibility)
+
+"First route looks great!! Super clean, keep up the great work."
+"Looking forward to seeing some awesome unit testing!"
+
+Architecture
+------------------------------------------------------------------------------------------
+[yes] Code uses encapsulation and modularization to achieve separation of concerns
+[yes] File tree is organized and navigable
+
+Reusability
+------------------------------------------------------------------------------------------
+[yes] Code uses reusable components, functions, and services

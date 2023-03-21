@@ -19,14 +19,6 @@ export const App = () => {
 		image: ''
 	})
 
-	cosnt [addForm, setAddForm] = useState({
-		name: '',
-		description: '',
-		price: '',
-		category: '',
-		image: ''
-	})
-
 	const defaultItem = {
 			name: "Item Name",
 			price: 20,
@@ -75,39 +67,6 @@ export const App = () => {
 	useEffect(() => {
 		fetchSauces();
 	}, []);
-
-	const handleSubmit = async (event) => {
-		event.preventDefault()
-
-		const response = await fetch('url', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				name: FormData.name
-			})
-
-		})
-		const data = await response.json()
-	}
-
-	const handleChange = event => {
-		const {name, value} = event.target	
-		//set the form data 
-		setAddForm(previousState => ({
-			...previousState,
-			[name]: value
-		}))
-	}
-	/* 
-Form Add item:
-	Name
-	Description
-	Price
-	Category
-	Image
-	*/
 
 	const handleSubmit = async (event) => {
 		event.preventDefault()

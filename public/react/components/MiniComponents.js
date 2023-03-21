@@ -3,7 +3,7 @@ import React from "react";
 //the Card renders the name, price, description, and CardImage of one item
 export function Card({item,handleClick}){
 
-    return(<div className="card" onClick={(event)=>handleClick(event,item.slug)} >
+    return(<div className="card" onClick={(event)=>handleClick(event,item.id)} >
         <h2>{item.title}</h2>
         <h3>{["$ ",item.price].join(" ")}</h3>
         <p>{item.description}</p>
@@ -27,7 +27,6 @@ export function SingleItem({item}){
             <p>{item.description}</p>
             <img src={item.image}/>
         </article>
-
     </main>);
 }
 

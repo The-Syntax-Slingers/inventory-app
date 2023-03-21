@@ -72,14 +72,11 @@ export const App = () => {
 	}
 
 	function handleItemClick(event,slug){
-		//fetch request to get the single item goes here
-		setView({...view, page: "item", item: {
-			title: "Item #0",
-			price: 20,
-			description: "Test item for single view; when fetch is written this will be deleted.",
-			image: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
-			}
-		})
+		try{
+
+		}catch(err){
+			console.error(err);
+		}
 		console.log("You have clicked on ", event.target.parentNode, ". Needs fetch");
 	}
 //renders

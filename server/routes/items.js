@@ -53,7 +53,7 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-router.update("/:id",
+router.put("/:id",
   [check("name").not().isEmpty().trim()],
   [check("image").not().isEmpty().trim()],
   [check("description").not().isEmpty().trim()],

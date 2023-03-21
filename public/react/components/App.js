@@ -14,10 +14,10 @@ export const App = () => {
 	const [sauces, setSauces] = useState([]);
 
 	const defaultItem = {
-			name: "Item Name",
+			title: "Item Name",
 			price: 20,
 			description: "This item is a test item, for debugging and testing. User should never see it.",
-			imageLink: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
+			image: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
 	}
 	const defaultView = {
 		page: "home",
@@ -25,10 +25,10 @@ export const App = () => {
 		slug: null,
 		item: null,
 		itemDraft: {
-			name: "",
+			title: "",
 			price: 0,
 			description: "",
-			imageLink: "" 
+			image: "" 
 		}
 	}
 	const [view, setView] = useState(defaultView)
@@ -45,11 +45,17 @@ export const App = () => {
 		}
 	}
 
+	async function fetchAndSetPages(){
+		try{
+			const response = await fetch(`${apiURL}/items`);
+			const itemsData = await response.json();
+			setView({...defaultView, items: itemsData, itemDraft: {...view.itemDraft}});
+		}catch(err){
+			console.error(err);
+		}
+	}
 	function handleHomeClick(){
-		//call to fetch all iitems goes here; should be the function that gets called by onEffect.
-		console.log("home was clicked, needs fetch")
-		//delete when fetch is done.
-		setView({...view, page: "home"});
+		fetchAndSetPages()
 	}
 	function handleNewItemClick(){
 		alert("you have clicked the new item button, functionality not written!")
@@ -57,10 +63,10 @@ export const App = () => {
 	function handleItemClick(event,slug){
 		//fetch request to get the single item goes here
 		setView({...view, page: "item", item: {
-			name: "Item #0",
+			title: "Item #0",
 			price: 20,
 			description: "Test item for single view; when fetch is written this will be deleted.",
-			imageLink: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
+			image: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg" 
 			}
 		})
 		console.log("You have clicked on ", event.target.parentNode, ". Needs fetch");
@@ -69,6 +75,7 @@ export const App = () => {
 	//reload
 	useEffect(() => {
 		// fetchSauces();
+		fetchAndSetPages();
 	}, []);
 
 	//loader choses which 'pages' to render.

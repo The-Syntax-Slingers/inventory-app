@@ -13,13 +13,13 @@ export const App = () => {
 //state variables and defaults
 	const [sauces, setSauces] = useState([]);
 
-	const [addForm, setAddForm] = useState({
+	/*const [addForm, setAddForm] = useState({
 		name: '',
 		description: '',
 		price: '',
 		category: '',
 		image: ''
-	})
+	})*/
 
 	const defaultItem = {
 			name: "Item Name",
@@ -98,14 +98,14 @@ export const App = () => {
 		const data = await response.json()
 	}
 
-	const handleChange = event => {
+	/*const handleChange = event => {
 		const {name, value} = event.target	
 		//set the form data 
 		setAddForm(previousState => ({
 			...previousState,
 			[name]: value
 		}))
-	}
+	}*/
 	/* 
 Form Add item:
 	Name

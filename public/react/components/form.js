@@ -1,103 +1,36 @@
 //create form component to create an item 
-import React, {useState} from 'react'
-import apiURL from '../api';
 
-
-const Form = ({item, setView}) => {
-
-    const [formData, setFormData] = useState({
-		title: '',
-		price: 0,
-		category: '',
-		description: '',
-		image: ''
-	})
-    console.log('ITEM :', item)
-    //create options for categories
-    const options = [
-        {label: 'Shirt', value: 'Shirt'},
-        {label: 'Shoe', value : 'Shoe'},
-        {label: 'Hat', value: 'Hat'},
-        {label: 'Pants', value: 'Pants'},
-        {label: 'Glasses', value: 'Glasses'}
-    ]
-
-
-    const DropDown = ({label, value, options, name, onChange}) => {
-        return (
-            <label>
-                {label}
-                <select value={value} name={'category'} onChange={handleChange} >
-                    {options.map(option => (
-                        <option value={option.value}>{option.label}</option>
-                    ))}
-                </select>
-            </label>
-        )
-    }
-
-    const handleSubmit = async (event) => {
-		event.preventDefault()
-
-		const response = await fetch(`${apiURL}/items/`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({
-			title: formData.title,
-            price: formData.price,
-			category: formData.category,
-			description: formData.description,
-			image: formData.image
-			})
-		})
-		const data = await response.json()
-	}
-
-    const handleChange = event => {
-		const {name, value } = event.target
-        console.log(value)
-		setFormData(prevousState => ({
-			...prevousState, 
-			[name]: value 
-		}))
-    
-	}
-
+const Form = () => {
 
     return(
         <div>
         <h1>Add an Item</h1>
-        <form onSubmit={handleSubmit}>
+        <form>
             <div>
                 Name <br/>
-                <input placeholder='Item Name' type='text' id='title' name='title' value={formData.title} onChange={handleChange} required/>
+                <input />
             </div>
             <div>
                 Description <br/>
-                <input placeholder='Item description' type='text' id='description' name='description' value={formData.description} onChange={handleChange} required/>
+                <input/>
             </div>
             <div>
                 Price <br/>
-                <input placeholder='Price' type='number' id='price' name='price' value={formData.price} onChange={handleChange} required/>
+                <input />
             </div>
             <div>
                 Category <br/>
-                <DropDown options={options} id='category' name='category' value={formData.category} onChange={handleChange}/>
-                <p>TEST VALUE: {value}</p>
+                <input/>
             </div>
             <div>
                 Image <br/>
-                <input placeholder='Image URL' id='image' name='image' value={formData.image} onChange={handleChange} />
+                <input/>
             </div>
-            <button type="submit">Submit</button>
+            <button>Submit</button>
         </form>
     </div>
     )
-
 }
 
 
-
-export default Form 
+export default Form; 

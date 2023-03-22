@@ -8,12 +8,8 @@ function NavBar({ view, navClicks }) {
                 {view.page === "home" ? "you're on the home" : "Home"}
             </button>
 
-            <button className="navButton" onClick={navClicks.newItem}>
-                {view.page === "newItem" ? "you're on new item" : "New Item"}
-            </button>
-
-            <button className="navButton">
-                {view.page === "delete" ? "you're deleting an item" : "delete Item"}
+            <button className="navButton" onClick={navClicks.add}>
+                {view.page === "add" ? "you're adding a new item" : "Add New Item"}
             </button>
         </ul>
     </nav>);

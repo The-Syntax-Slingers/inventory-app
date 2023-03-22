@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import apiURL from '../../api';
 
-export function SingleItem({ item, backToHome }) {
+export function SingleItem({ item, backToHome, reloadItem }) {
     const defaultFormState = {
         visible: false,
         form: {
@@ -44,7 +44,6 @@ export function SingleItem({ item, backToHome }) {
                 finalData[key] = form[key];
             }
         }
-        console.log("final data is ", finalData);
         
         try{
             const response = await fetch(`${apiURL}/items/${item.id}`,
@@ -57,7 +56,7 @@ export function SingleItem({ item, backToHome }) {
                     finalData
                 )
             });
-            backToHome();
+            reloadItem(item.id)
         }catch(err){console.error(err)}
          
     }
@@ -112,6 +111,8 @@ return (<main>
                     value={formState.form.description}
                     onChange={(event)=>setFormState({...formState, form: {...formState.form, description: event.target.value}})}
                     type="textarea"
+                    rows="5"
+                    columns="10"
                     name="description"
                 ></input>   
 

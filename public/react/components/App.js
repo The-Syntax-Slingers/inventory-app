@@ -70,7 +70,7 @@ export const App = () => {
 		alert("you have clicked the new item button, functionality not written!")
 	}
 
-	async function handleItemClick(event, id) {
+	async function handleItemClick(id) {
 		try {
 			const response = await fetch(`${apiURL}/items/${id}`);
 			const itemData = await response.json();
@@ -78,7 +78,6 @@ export const App = () => {
 		} catch (err) {
 			console.error(err);
 		}
-		console.log("You have clicked on ", event.target.parentNode, ". Needs fetch");
 	}
 	//renders
 	//reload
@@ -134,7 +133,7 @@ Form Add item:
 			case 'item':
 				console.log("you are on single item page, the view is: ", view)
 				return (<>
-					<SingleItem item={view.item} backToHome={handleHomeClick} />
+					<SingleItem item={view.item} backToHome={handleHomeClick} reloadItem={handleItemClick} />
 				</>);
 			//add item logic
 			case 'add':

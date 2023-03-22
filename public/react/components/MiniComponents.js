@@ -1,13 +1,18 @@
 import React from "react";
 
 //the Card renders the name, price, description, and CardImage of one item
-export function Card({ item, handleClick }) {
+export function Card({item,handleClick}){
 
-    return (<div className="card" onClick={(event) => handleClick(event, item.id)} >
-        <h2>{item.title}</h2>
-        <h3>{["$ ", item.price].join(" ")}</h3>
-        <p>{item.description}</p>
-        <CardImage imageLink={item.image} />
+    return(<div className="card" onClick={handleClick} >
+       <div className="cardTitle">
+             <h2>{item.name}</h2>
+            <h3>{["$ ",item.price].join("")}</h3>
+        </div> 
+        <div className="cardBody">
+            <CardImage imageLink={item.imageLink}/>
+            <p>{item.description}</p>
+        </div>
+        
     </div>);
 }
 

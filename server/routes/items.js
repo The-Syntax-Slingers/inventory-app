@@ -32,6 +32,7 @@ router.post("/",
   [check("price").isNumeric()], //.min(0.00)
   [check("category").not().isEmpty().trim()],
   async (req, res, next) => {
+    console.log(req.body)
     try {
       // Check for validation errors
       const errors = validationResult(req)

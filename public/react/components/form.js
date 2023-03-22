@@ -23,7 +23,7 @@ const Form = ({item, setView}) => {
     ]
 
 
-    const DropDown = ({label, value, options, name, onChange}) => {
+    const DropDown = ({label, value, options}) => {
         return (
             <label>
                 {label}
@@ -85,7 +85,6 @@ const Form = ({item, setView}) => {
             <div>
                 Category <br/>
                 <DropDown options={options} id='category' name='category' value={formData.category} onChange={handleChange}/>
-                <p>TEST VALUE: {value}</p>
             </div>
             <div>
                 Image <br/>

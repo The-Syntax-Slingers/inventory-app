@@ -2,7 +2,6 @@ import React from "react";
 
 //the Card renders the name, price, description, and CardImage of one item
 export function Card({item,handleClick}){
-
     return(<div className="card" onClick={handleClick} >
        <div className="cardTitle">
              <h2>{item.name}</h2>

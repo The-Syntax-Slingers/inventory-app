@@ -13,7 +13,6 @@ function NavBar({ view, navClicks }) {
             </button>
         </ul>
     </nav>);
-
 }
 
 export function Header({ view, navClicks }) {

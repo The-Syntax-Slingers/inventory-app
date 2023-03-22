@@ -13,10 +13,6 @@ function NavBar({ view, navClicks }) {
             </button>
 
             <button className="navButton">
-                {view.page === "update" ? "you're updating an item" : "update Item"}
-            </button>
-
-            <button className="navButton">
                 {view.page === "delete" ? "you're deleting an item" : "delete Item"}
             </button>
         </ul>

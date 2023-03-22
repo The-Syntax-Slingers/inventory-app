@@ -64,12 +64,3 @@ display:flex;
 justify-content: space-between;
 gap: 20px;
 }
-.form input[type="update item"] {
-  background-color: rgb(233, 212, 212);
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}

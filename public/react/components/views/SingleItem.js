@@ -28,10 +28,73 @@ export function SingleItem({ item, backToHome }) {
     }
     //editing item on single view
     function handleEdit(){
-        console.log("edit!")
+        setFormState({...formState,visible:true});
     }
-    function UpdateItemForm({formState,setFormState}){
+    function handleSubmit(event){
+        event.preventDefault();
+        console.log("submit Clicked");
+    }
 
+    function UpdateItemForm({formState,setFormState}){
+        return(<>
+        <form onSubmit={handleSubmit}>
+            {/* title; must be string */}
+            <label className="hide-element" htmlFor="title">Title: </label>
+            <input
+                value={formState.form.title}
+                onChange={(event)=>setFormState({...formState, form: {...form, title: event.target.value}})}
+                type="text"
+                name="title"
+            ></input>
+
+            {/*price; must be a number */}
+            <label className="hide-element" htmlFor="price" >Price: </label>
+            <input
+                value={formState.form.price}
+                onChange={(event)=>{
+                    console.log("form state is ",formState.form);
+                    setFormState({...formState, form: {...form, price: event.target.value}});
+                }}
+                type="number"
+                min="0"
+                step=".01"
+                name="price"
+            ></input>
+
+             {/*description; must be string */}
+             <label className="hide-element" htmlFor="description" >Description: </label>
+            <input
+                value={formState.form.description}
+                onChange={(event)=>setFormState({...formState, form: {...form, description: event.target.value}})}
+                type="text"
+                name="description"
+            ></input>   
+
+            {/*image;  must be string*/}
+            <label className="hide-element" htmlFor="image" >Image: </label>
+            <input
+                value={formState.form.image}
+                onChange={(event)=>setFormState({...formState, form: {...form, image: event.target.value}})}
+                type="text"
+                name="image"
+            ></input>     
+            
+            {/*category; needs to be double checked later, to ensure implementation matches other form.*/}
+            <label className="hide-element" htmlFor="category" ></label>
+            <input
+                 value={formState.form.category}
+                 onChange={(event)=>setFormState({...formState, form: {...form, category: event.target.value}})}
+                 type="text"
+                 name="description"
+            ></input>
+
+            <label className="hide-element" htmlFor="submit" >Submit: </label>
+            <input type="submit"></input>
+
+            <label></label>
+            <button onClick={console.log("write cancel function")}>cancel</button>
+                
+        </form></>);
     }
     return (<main>
         <h1>{item.title}</h1>
@@ -45,7 +108,7 @@ export function SingleItem({ item, backToHome }) {
             {formState.visible ?
               <UpdateItemForm formState={formState} setFormState={setFormState} />
               :
-              <></>
+              ""
             }
         </article>
     </main>);

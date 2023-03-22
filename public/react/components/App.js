@@ -7,7 +7,6 @@ import { SingleItem } from './views/SingleItem';
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
 
-
 export const App = () => {
 	//state variables and defaults
 	const [sauces, setSauces] = useState([]);
@@ -62,6 +61,7 @@ export const App = () => {
 			console.error(err);
 		}
 	}
+
 	function handleHomeClick() {
 		fetchAndSetItems()
 	}
@@ -134,7 +134,7 @@ Form Add item:
 			case 'item':
 				console.log("you are on single item page, the view is: ", view)
 				return (<>
-					<SingleItem item={view.item} />
+					<SingleItem item={view.item} backToHome={handleHomeClick} />
 				</>);
 			//add item logic
 			case 'add':

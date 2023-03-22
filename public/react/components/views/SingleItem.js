@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
 import apiURL from '../../api';
 
+<<<<<<< Updated upstream
 export function SingleItem({ item, backToHome, reloadItem }) {
+=======
+export function SingleItem({ item, backToHome }) {
+>>>>>>> Stashed changes
     const defaultFormState = {
         visible: false,
         form: {
@@ -12,9 +16,13 @@ export function SingleItem({ item, backToHome, reloadItem }) {
             category: item.category
         }
     }
+<<<<<<< Updated upstream
 
     const [formState, setFormState] = useState(defaultFormState)
    
+=======
+    const [formState, setFormState] = useState(defaultFormState)
+>>>>>>> Stashed changes
     //deleting item on single view
     async function deleteItem() {
         try {
@@ -28,7 +36,13 @@ export function SingleItem({ item, backToHome, reloadItem }) {
             console.error(err);
         }
     }
+    //editing item on single view
+    function handleEdit(){
+        console.log("edit!")
+    }
+    function UpdateItemForm({formState,setFormState}){
 
+<<<<<<< Updated upstream
     //editing item on single view
     function handleEdit(){
         setFormState({...formState,visible:true});
@@ -68,6 +82,10 @@ export function SingleItem({ item, backToHome, reloadItem }) {
 
 
 return (<main>
+=======
+    }
+    return (<main>
+>>>>>>> Stashed changes
         <h1>{item.title}</h1>
         <article>
             <h3>{["$ ", item.price].join(" ")}</h3>
@@ -76,6 +94,14 @@ return (<main>
             <br />
             <button onClick={deleteItem}>Delete</button>
             <button onClick={handleEdit}>Edit</button>
+<<<<<<< Updated upstream
+=======
+            {formState.visible ?
+              <UpdateItemForm formState={formState} setFormState={setFormState} />
+              :
+              <></>
+            }
+>>>>>>> Stashed changes
         </article>
             
             {/* Form conditionally rendered below */}

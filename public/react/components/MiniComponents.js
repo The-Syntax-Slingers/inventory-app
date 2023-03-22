@@ -4,11 +4,11 @@ import React from "react";
 export function Card({item,handleClick}){
     return(<div className="card" onClick={handleClick} >
        <div className="cardTitle">
-             <h2>{item.name}</h2>
+             <h2>{item.title}</h2>
             <h3>{["$ ",item.price].join("")}</h3>
         </div> 
         <div className="cardBody">
-            <CardImage imageLink={item.imageLink}/>
+            <CardImage imageLink={item.image}/>
             <p>{item.description}</p>
         </div>
         

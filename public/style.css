@@ -5,14 +5,25 @@
   font-family: Arial, sans-serif;
 }
 
+main {
+  width: 95%;
+  margin: 10px auto;
+}
+
 header {
   margin: 30px;
 }
 
 nav {
   background-color: rgb(244, 225, 225);
-  border-radius: 0ch;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+.nav-item {
+  padding: 5px;
 }
 
 button {
@@ -28,10 +39,9 @@ button:hover {
 }
 
 .item-list {
-  width: 80%;
   margin: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .card {
@@ -42,9 +52,6 @@ button:hover {
   box-sizing: border-box;
   box-shadow: 1px 2px;
   border-radius: 5px;
-  align-items: end;
-  flex: .5 0 30px;
-  max-width: 1 0 30px;
 }
 
 .card h2 {

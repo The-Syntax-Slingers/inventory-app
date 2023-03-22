@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SaucesList } from './SaucesList';
 import { Items } from './Items'
-import { Header } from './Header';
+import { NavBar } from './NavBar';
 import { SingleItem } from './views/SingleItem';
 import Form from './Form'
 
@@ -63,7 +63,7 @@ export const App = () => {
 	}
 
 	function handleNewItemClick() {
-		setView({ ...view, page: 'add'})
+		setView({ ...view, page: 'add' })
 	}
 
 	async function handleItemClick(id) {
@@ -102,15 +102,15 @@ export const App = () => {
 			case 'add':
 				console.log("you are on the add page")
 				return (
-					<>	
-						<Form item={view.itemDraft} setView={setView}/>
+					<>
+						<Form item={view.itemDraft} setView={setView} />
 					</>
 				)
 		}
 	}
 	return (
 		<main>
-			<Header view={view} navClicks={{ home: handleHomeClick, add: handleNewItemClick }} />
+			<NavBar view={view} navClicks={{ home: handleHomeClick, add: handleNewItemClick }} />
 			<Loader view={view} />
 		</main>
 	)

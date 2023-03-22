@@ -16,7 +16,7 @@ function NavBar({ view, navClicks }) {
 }
 
 export function Header({ view, navClicks }) {
-    // Remove header and just make it nav
+    // Remove header and just make it a Nav
     return (<header>
         <h1>Welcome to the Shop!</h1>
         <NavBar view={view} navClicks={navClicks} />

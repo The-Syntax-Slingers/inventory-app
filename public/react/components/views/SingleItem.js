@@ -12,6 +12,7 @@ export function SingleItem({ item, backToHome }) {
             category: item.category
         }
     }
+
     const [formState, setFormState] = useState(defaultFormState)
    
     //deleting item on single view
@@ -27,14 +28,40 @@ export function SingleItem({ item, backToHome }) {
             console.error(err);
         }
     }
+
     //editing item on single view
     function handleEdit(){
         setFormState({...formState,visible:true});
     }
-    function handleSubmit(event){
+    async function handleSubmit(event){
         event.preventDefault();
-        console.log("submit Clicked");
+       
+        let finalData = defaultFormState.form;
+        const form = formState.form
+        //this only adds new data IF it's not empty & new
+        for(let key in form){
+            if(form[key] && form[key] !== finalData[key]){
+                finalData[key] = form[key];
+            }
+        }
+        console.log("final data is ", finalData);
+        
+        try{
+            const response = await fetch(`${apiURL}/items/${item.id}`,
+            {
+                method: "PUT",
+                headers:{
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(
+                    finalData
+                )
+            });
+            backToHome();
+        }catch(err){console.error(err)}
+         
     }
+
     function handleCancel(event){
         event.preventDefault();
         setFormState(defaultFormState);
@@ -57,7 +84,7 @@ return (<main>
         <>
             <form onSubmit={handleSubmit}>
                 {/* title; must be string */}
-                <label className="hide-element" htmlFor="title">Title: </label>
+                <label htmlFor="title">Title: </label>
                 <input
                     value={formState.form.title}
                     onChange={(event)=>setFormState({...formState, form: {...formState.form, title: event.target.value}})}
@@ -66,7 +93,7 @@ return (<main>
                 ></input>
 
                 {/*price; must be a number */}
-                <label className="hide-element" htmlFor="price" >Price: </label>
+                <label htmlFor="price" >Price: </label>
                 <input
                     value={formState.form.price}
                     onChange={(event)=>{
@@ -80,16 +107,16 @@ return (<main>
                 ></input>
 
                 {/*description; must be string */}
-                <label className="hide-element" htmlFor="description" >Description: </label>
+                <label htmlFor="description" >Description: </label>
                 <input
                     value={formState.form.description}
                     onChange={(event)=>setFormState({...formState, form: {...formState.form, description: event.target.value}})}
-                    type="text"
+                    type="textarea"
                     name="description"
                 ></input>   
 
                 {/*image;  must be string*/}
-                <label className="hide-element" htmlFor="image" >Image: </label>
+                <label htmlFor="image" >Image: </label>
                 <input
                     value={formState.form.image}
                     onChange={(event)=>setFormState({...formState, form: {...formState.form, image: event.target.value}})}
@@ -98,7 +125,7 @@ return (<main>
                 ></input>     
                 
                 {/*category; needs to be double checked later, to ensure implementation matches other form.*/}
-                <label className="hide-element" htmlFor="category" ></label>
+                <label htmlFor="category" ></label>
                 <input
                     value={formState.form.category}
                     onChange={(event)=>setFormState({...formState, form: {...formState.form, category: event.target.value}})}
@@ -107,10 +134,10 @@ return (<main>
                 ></input>
 
                 <div>
-                    <label className="hide-element" htmlFor="submit" >Submit: </label>
+                    <label htmlFor="submit" >Submit: </label>
                     <input type="submit" name="submit"></input>
 
-                    <label className="hide-element" htmlFor="cancel" >Cancel: </label>
+                    <label htmlFor="cancel" >Cancel: </label>
                     <button onClick={(event)=>handleCancel(event)} name="cancel">Cancel</button>
                 </div>
             </form>

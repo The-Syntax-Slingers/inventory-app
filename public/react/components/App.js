@@ -57,20 +57,6 @@ export const App = () => {
 		setView("home")
 	}
 
-	function handleNewItemClick() {
-		setView({ ...view, page: 'add' })
-	}
-
-	async function handleItemClick(id) {
-		try {
-			const response = await fetch(`${apiURL}/items/${id}`);
-			const itemData = await response.json();
-			setView({ ...view, page: "item", id: id, item: itemData });
-		} catch (err) {
-			console.error(err);
-		}
-	}
-
 	useEffect(() => {
 		setHome()
 	}, []);
@@ -95,7 +81,11 @@ export const App = () => {
 
 	return (
 		<main>
-			<NavBar links={{ home: setHome, add: handleNewItemClick }} />
+			<NavBar links={{
+				home: setHome,
+				add: () => setView("add")
+			}}
+			/>
 			<Loader />
 		</main>
 	)

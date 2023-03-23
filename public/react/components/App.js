@@ -8,9 +8,6 @@ import apiURL from '../api';
 
 export const App = () => {
 	//state variables and defaults
-	const [sauces, setSauces] = useState([]);
-	const [view, setView] = useState(defaultView)
-
 	const defaultItem = {
 		title: "Item Name",
 		price: 20,
@@ -18,6 +15,7 @@ export const App = () => {
 		description: "This item is a test item, for debugging and testing. User should never see it.",
 		image: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg"
 	}
+
 	const emptyDraft = {
 		title: "",
 		price: 0,
@@ -33,6 +31,8 @@ export const App = () => {
 		item: null,
 		itemDraft: emptyDraft
 	}
+
+	const [view, setView] = useState(defaultView)
 
 	//functions
 	async function fetchAndSetItems() {
@@ -71,20 +71,16 @@ export const App = () => {
 	// Loads page views
 	function Loader({ view }) {
 		switch (view.page) {
-			case 'home':
-				return (<>
-					<Items items={view.items} handleClick={handleItemClick} />
-				</>);
-			case 'item':
-				return (<>
-					<SingleItem item={view.item} backToHome={handleHomeClick} reloadItem={handleItemClick} />
-				</>);
-			case 'add':
-				return (
-					<>
-						<NewItemForm item={view.itemDraft} setView={setView} />
-					</>
-				)
+			case 'home': return (<>
+				<Items items={view.items} handleClick={handleItemClick} />
+			</>);
+			case 'item': return (<>
+				<SingleItem item={view.item} backToHome={handleHomeClick} reloadItem={handleItemClick} />
+			</>);
+			case 'add': return (<>
+				<NewItemForm item={view.itemDraft} setView={setView} />
+			</>
+			)
 		}
 	}
 

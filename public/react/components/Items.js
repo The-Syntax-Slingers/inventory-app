@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "./MiniComponents";
+import { Card } from "./Card";
 
 export function Items({ items, handleClick }) {
     return (<div className="item-list">

@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import apiURL from '../api';
 
 
-const Form = ({item, setView}) => {
+export function NewItemForm({item, setView}) {
 
     const [formData, setFormData] = useState({
 		title: '',
@@ -23,7 +23,7 @@ const Form = ({item, setView}) => {
     ]
 
 
-    const DropDown = ({label, value, options}) => {
+    function DropDown ({label, value, options}) {
         return (
             <label>
                 {label}
@@ -36,7 +36,7 @@ const Form = ({item, setView}) => {
         )
     }
 
-    const handleSubmit = async (event) => {
+    async function handleSubmit (event) {
 		event.preventDefault()
 
 		const response = await fetch(`${apiURL}/items/`, {
@@ -55,7 +55,7 @@ const Form = ({item, setView}) => {
 		const data = await response.json()
 	}
 
-    const handleChange = event => {
+    function handleChange (event){
 		const {name, value } = event.target
         console.log(value)
 		setFormData(prevousState => ({
@@ -97,4 +97,3 @@ const Form = ({item, setView}) => {
 
 }
 
-export default Form

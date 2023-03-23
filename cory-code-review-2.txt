@@ -1,0 +1,43 @@
+Hey Syntax Slingers! :) Popping in to give some initial feedback on the codebase!
+
+Readability
+------------------------------------------------------------------------------------------
+[Mostly] New code is syntactic - everything clearly named (files, objects, functions, variables)
+
+"Some confusing code here, but everything is solid and appears to be working! Make sure we are consistent with naming of files (Are components capitalized? Etc.)"
+
+[No] Clear, concise comments that describes why code was included rather than what it does
+
+"Remember, the code should be readable without the need for comments explaining what it does!"
+
+[Yes] No redundant comments
+
+"Console.log is great for development, but make sure to remove them when you are finished!"
+
+Security
+------------------------------------------------------------------------------------------
+[n/a] All secret information is stored securely (environmental variables, github secrets)
+[n/a] User information protected appropriately (encryption, auth)
+
+Stability
+------------------------------------------------------------------------------------------
+[Yes] Errors are handled where necessary (try/catch blocks, console errors, status codes)
+[No] Appropriate test coverage and reporting (unit, end-to-end, accessibility)
+
+"Currently no testing at this point in development"
+
+Architecture
+------------------------------------------------------------------------------------------
+[Sometimes] Code uses encapsulation and modularization to achieve separation of concerns
+
+"If you are going to have a separate "component" for DropDown, recommend putting it in a different component file"
+
+[Mostly] File tree is organized and navigable
+
+"What is sauces? Just an example? Can it be deleted?"
+
+Reusability
+------------------------------------------------------------------------------------------
+[Yes] Code uses reusable components, functions, and services
+
+"Look into Sequelize's built in validation rather than validating it on your express routes for the Put and Post!"

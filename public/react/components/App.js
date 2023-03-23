@@ -40,7 +40,6 @@ export const App = () => {
 			const response = await fetch(`${apiURL}/items/`);
 			const itemsData = await response.json();
 			setView({ ...defaultView, items: itemsData });
-
 		} catch (err) {
 			console.error(err);
 		}

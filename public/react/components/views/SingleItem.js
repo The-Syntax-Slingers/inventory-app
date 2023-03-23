@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import apiURL from '../../api';
 
-
-
 export function SingleItem({ item, backToHome, reloadItem }) {
     //this generates options for dropdown
     const options = [
@@ -83,7 +81,6 @@ export function SingleItem({ item, backToHome, reloadItem }) {
         setFormState(defaultFormState);
     }
 
-
     return (<main>
         <article className='single-item-view'>
             <h1>{item.title}</h1>
@@ -146,18 +143,17 @@ export function SingleItem({ item, backToHome, reloadItem }) {
                         name="image"
                     ></input>
 
-
-                     <label htmlFor='category'>Category: </label>
+                    <label htmlFor='category'>Category: </label>
                     <select
-                    name='category'
-                    value={formState.form.category}
-                    onChange={(event) => setFormState({...formState, form: {...formState.form, category: event.target.value}})}
+                        name='category'
+                        value={formState.form.category}
+                        onChange={(event) => setFormState({ ...formState, form: { ...formState.form, category: event.target.value } })}
                     >
-                        {options.map((option,idx) => (
-                        <option value={option} key={idx}>{option}</option>
+                        {options.map((option, idx) => (
+                            <option value={option} key={idx}>{option}</option>
                         ))}
                     </select>
-                    
+
 
                     <label htmlFor="submit" >Submit: </label>
                     <input type="submit" name="submit"></input>

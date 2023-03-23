@@ -17,7 +17,7 @@ export function EditItemForm({item,reloadItem,setFormVisible}){
     async function handleSubmit(event) {
         event.preventDefault();
 
-        let finalData = {};
+        let finalData = defaultFormState;
         
         for (let key in formData) {
             if (formData[key] && formData[key] !== defaultFormState[key]) {

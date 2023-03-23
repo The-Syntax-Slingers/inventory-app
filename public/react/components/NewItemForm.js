@@ -1,43 +1,23 @@
 //create form component to create an item 
 import React, {useState} from 'react'
 import apiURL from '../api';
+import { DropDown } from './FormDropDown';
 
 
-export function NewItemForm({item, setView}) {
+export function NewItemForm() {
 
     const [formData, setFormData] = useState({
 		title: '',
 		price: 0,
-		category: '',
+		//eventually, this needs to be set by a global variable so that it always aligns with the dropdown component
+        category: "men's clothing",
 		description: '',
 		image: ''
 	})
-    console.log('ITEM :', item)
-    //create options for categories
-    const options = [
-        {label: 'Shirt', value: 'Shirt'},
-        {label: 'Shoe', value : 'Shoe'},
-        {label: 'Hat', value: 'Hat'},
-        {label: 'Pants', value: 'Pants'},
-        {label: 'Glasses', value: 'Glasses'}
-    ]
-
-
-    function DropDown ({label, value, options}) {
-        return (
-            <label>
-                {label}
-                <select value={value} name={'category'} onChange={handleChange} >
-                    {options.map(option => (
-                        <option value={option.value}>{option.label}</option>
-                    ))}
-                </select>
-            </label>
-        )
-    }
 
     async function handleSubmit (event) {
 		event.preventDefault()
+        console.log(formData)
 
 		const response = await fetch(`${apiURL}/items/`, {
 		method: 'POST',
@@ -84,7 +64,7 @@ export function NewItemForm({item, setView}) {
             </div>
             <div>
                 Category <br/>
-                <DropDown options={options} id='category' name='category' value={formData.category} onChange={handleChange}/>
+                <DropDown id='category' name='category' formData={formData} handleChange={handleChange}/>
             </div>
             <div>
                 Image <br/>

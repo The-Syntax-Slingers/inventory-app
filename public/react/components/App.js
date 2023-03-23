@@ -74,9 +74,11 @@ export const App = () => {
 			case 'home': return (<>
 				<Items items={view.items} handleClick={handleItemClick} />
 			</>);
+
 			case 'item': return (<>
 				<SingleItem item={view.item} backToHome={handleHomeClick} reloadItem={handleItemClick} />
 			</>);
+
 			case 'add': return (<>
 				<NewItemForm item={view.itemDraft} setView={setView} />
 			</>

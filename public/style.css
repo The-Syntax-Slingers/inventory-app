@@ -130,6 +130,7 @@ button:hover {
 .single-item-view {
   display: flex;
   flex-direction: column;
+  border-color: #666;
 }
 
 .single-item-view .image-container {
@@ -146,7 +147,25 @@ button:hover {
 }
 .single-item-view p {
  margin: 10px;
+ 
 }
-.buttons {
-  display: flex;
+.button {
+  display: flex-wrap;
 }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+    align-items: center;
+
+  }
+  input[type="text"], input[type="number"], input[type="textarea"]{
+    background-color: white;
+    width: 400px;
+  }
+
+  input[type="textarea"]{
+    height: 100px;
+  }
+

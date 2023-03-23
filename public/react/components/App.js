@@ -88,7 +88,7 @@ export const App = () => {
 
 	return (
 		<main>
-			<NavBar navClicks={{ home: handleHomeClick, add: handleNewItemClick }} />
+			<NavBar links={{ home: handleHomeClick, add: handleNewItemClick }} />
 			<Loader view={view} />
 		</main>
 	)

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { SaucesList } from './SaucesList';
 import { Items } from './Items'
 import { NavBar } from './NavBar';
 import { SingleItem } from './views/SingleItem';
@@ -10,6 +9,7 @@ import apiURL from '../api';
 export const App = () => {
 	//state variables and defaults
 	const [sauces, setSauces] = useState([]);
+	const [view, setView] = useState(defaultView)
 
 	const defaultItem = {
 		title: "Item Name",
@@ -33,19 +33,8 @@ export const App = () => {
 		item: null,
 		itemDraft: emptyDraft
 	}
-	const [view, setView] = useState(defaultView)
 
 	//functions
-	async function fetchSauces() {
-		try {
-			const response = await fetch(`${apiURL}/sauces`);
-			const saucesData = await response.json();
-			setSauces(saucesData);
-		} catch (err) {
-			console.log("Oh no an error! ", err)
-		}
-	}
-
 	async function fetchAndSetItems() {
 		try {
 			const response = await fetch(`${apiURL}/items/`);

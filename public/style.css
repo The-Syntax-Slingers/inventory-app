@@ -7,13 +7,15 @@
 
 main {
   width: 95%;
-  margin: 10px auto;
+  margin: 20px auto;
 }
 
 header {
   margin: 30px;
 }
-
+ul{
+  display: flexbox
+}
 nav {
   background-color: rgb(244, 225, 225);
   display: flex;
@@ -115,7 +117,7 @@ button:hover {
 
 .card-body {
   text-align: left;
-  width: 100%;
+  width: 40%;
   min-height: 130px;
   padding: 15px;
   display: flex;
@@ -133,13 +135,18 @@ button:hover {
 .single-item-view .image-container {
   padding: 20px;
   text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  margin: 30px;
 }
 
 .single-item-view img {
   max-height: 500px;
+ 
 }
-
+.single-item-view p {
+ margin: 10px;
+}
 .buttons {
   display: flex;
-
 }

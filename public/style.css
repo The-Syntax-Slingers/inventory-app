@@ -28,6 +28,14 @@ nav {
   margin-right: 15px;
 }
 
+.nav-item:hover {
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
 button {
   font-size: 15px;
   text-align: right;
@@ -56,6 +64,10 @@ button:hover {
   padding: 25px;
   border-radius: 15px;
   gap: 15px;
+}
+
+.card:hover {
+  cursor: pointer;
 }
 
 .card h2 {
@@ -91,4 +103,7 @@ button:hover {
   width: 100%;
   min-height: 130px;
   padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

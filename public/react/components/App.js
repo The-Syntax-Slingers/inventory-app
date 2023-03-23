@@ -7,30 +7,13 @@ import { NewItemForm } from './NewItemForm'
 import apiURL from '../api';
 
 export const App = () => {
-	//state variables and defaults
-	const defaultItem = {
-		title: "Item Name",
-		price: 20,
-		category: "test",
-		description: "This item is a test item, for debugging and testing. User should never see it.",
-		image: "https://photzy.com/assets/Cover-Stacey-Hill.jpg.optimal.jpg"
-	}
-
-	const emptyDraft = {
-		title: "",
-		price: 0,
-		category: "",
-		description: "",
-		image: ""
-	}
-
-	// Seperate view into their own state
+	// States
 	const [view, setView] = useState("home")
 	const [items, setItems] = useState([])
 	const [singleItem, setSingleItem] = useState(null)
 	const [itemCategories, setitemCategories] = useState([])
 
-	//functions
+	// Functions
 	async function fetchItems() {
 		try {
 			const response = await fetch(`${apiURL}/items/`);
@@ -84,6 +67,7 @@ export const App = () => {
 		}
 	}
 
+	// App
 	return (
 		<main>
 			<NavBar links={{

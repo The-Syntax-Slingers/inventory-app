@@ -38,6 +38,7 @@ export function EditItemForm({item,reloadItem,setFormVisible}){
                 });
             reloadItem(item.id)
         } catch (err) { console.error(err) }
+        console.log(finalData);
 
     }
 

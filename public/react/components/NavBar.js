@@ -1,7 +1,6 @@
 import React from "react";
 
 export function NavBar({ view, navClicks }) {
-    console.log("navbar says view is ", view)
     return (<nav>
         <div className="app-logo" onClick={navClicks.home}>
             <span className="nav-item emoji">📇</span>

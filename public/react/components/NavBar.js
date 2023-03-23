@@ -13,7 +13,7 @@ export function NavBar({ view, navClicks }) {
                 Add New Item
             </a>
 
-            <a className="nav-item nav-link" onClick={navClicks.add}>
+            <a className="nav-item nav-link">
                 Cart
             </a>
         </ul>

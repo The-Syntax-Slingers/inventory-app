@@ -65,7 +65,7 @@ export const App = () => {
 	}, []);
 
 	// Loads page views
-	function Loader({ view }) {
+	function Loader() {
 		switch (view) {
 			case 'home': return (<>
 				<Items items={items} handleClick={handleItemClick} />
@@ -85,7 +85,7 @@ export const App = () => {
 	return (
 		<main>
 			<NavBar links={{ home: setHome, add: handleNewItemClick }} />
-			<Loader view={view} />
+			<Loader />
 		</main>
 	)
 }

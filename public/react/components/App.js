@@ -5,7 +5,6 @@ import { NavBar } from './NavBar';
 import { SingleItem } from './views/SingleItem';
 import { NewItemForm } from './NewItemForm'
 
-// import and prepend the api url to any fetch calls
 import apiURL from '../api';
 
 export const App = () => {
@@ -75,32 +74,23 @@ export const App = () => {
 			console.error(err);
 		}
 	}
-	//renders
-	//reload
+
 	useEffect(() => {
-		// fetchSauces();
 		fetchAndSetItems();
 	}, []);
 
-	//loader choses which 'pages' to render.
+	// Loads page views
 	function Loader({ view }) {
 		switch (view.page) {
-			//home page logic
 			case 'home':
-				//debugging tool
-				console.log("you are on the home page. View is; ", view);
 				return (<>
 					<Items items={view.items} handleClick={handleItemClick} />
 				</>);
-			//single item logic
 			case 'item':
-				console.log("you are on single item page, the view is: ", view)
 				return (<>
 					<SingleItem item={view.item} backToHome={handleHomeClick} reloadItem={handleItemClick} />
 				</>);
-			//add item logic
 			case 'add':
-				console.log("you are on the add page")
 				return (
 					<>
 						<NewItemForm item={view.itemDraft} setView={setView} />
@@ -108,6 +98,7 @@ export const App = () => {
 				)
 		}
 	}
+
 	return (
 		<main>
 			<NavBar view={view} navClicks={{ home: handleHomeClick, add: handleNewItemClick }} />

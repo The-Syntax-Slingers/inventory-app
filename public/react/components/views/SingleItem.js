@@ -2,6 +2,19 @@ import React, { useState } from 'react';
 import apiURL from '../../api';
 
 export function SingleItem({ item, backToHome, reloadItem }) {
+    //this generates options for dropdown
+    const options = [
+        "men's clothing",
+        "jewelery",
+        "electronics",
+        'Shirt',
+        'Shoe',
+        'Hat',
+        'Pants',
+        'Glasses',
+    ];
+
+    //this sets the form to contain all the data already there
     const defaultFormState = {
         visible: false,
         form: {
@@ -12,6 +25,8 @@ export function SingleItem({ item, backToHome, reloadItem }) {
             category: item.category
         }
     }
+
+    //this controls the form
     const [formState, setFormState] = useState(defaultFormState);
 
     //deleting item on single view
@@ -65,7 +80,6 @@ export function SingleItem({ item, backToHome, reloadItem }) {
         event.preventDefault();
         setFormState(defaultFormState);
     }
-
 
     return (<main>
         <article className='single-item-view'>
@@ -129,14 +143,17 @@ export function SingleItem({ item, backToHome, reloadItem }) {
                         name="image"
                     ></input>
 
-                    {/*category; needs to be double checked later, to ensure implementation matches other form.*/}
-                    <label htmlFor="category" ></label>
-                    <input
+                    <label htmlFor='category'>Category: </label>
+                    <select
+                        name='category'
                         value={formState.form.category}
                         onChange={(event) => setFormState({ ...formState, form: { ...formState.form, category: event.target.value } })}
-                        type="text"
-                        name="description"
-                    ></input>
+                    >
+                        {options.map((option, idx) => (
+                            <option value={option} key={idx}>{option}</option>
+                        ))}
+                    </select>
+
 
                     <label htmlFor="submit" >Submit: </label>
                     <input type="submit" name="submit"></input>

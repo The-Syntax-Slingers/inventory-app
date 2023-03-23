@@ -1,14 +1,14 @@
 import React from "react";
 
 //the Card renders the name, price, description, and CardImage of one item
-export function Card({ item, handleClick }) {
+export function Card({ item, viewItem }) {
     const currencyFormatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
     });
 
     return (
-        <div className="card" onClick={(event) => handleClick(item.id)} >
+        <div className="card" onClick={() => viewItem(item.id)} >
             <div className="image-container">
                 <img className="card-image" src={item.image} />
             </div>

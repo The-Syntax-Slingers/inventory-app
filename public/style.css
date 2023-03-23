@@ -13,9 +13,11 @@ main {
 header {
   margin: 30px;
 }
-ul{
+
+ul {
   display: flexbox
 }
+
 nav {
   background-color: rgb(244, 225, 225);
   display: flex;
@@ -143,8 +145,9 @@ button:hover {
 
 .single-item-view img {
   max-height: 500px;
- 
+
 }
+
 .single-item-view p {
  margin: 10px;
  

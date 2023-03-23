@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import apiURL from '../api';
 
 
-const Form = ({item, setView}) => {
+export function Form({item, setView}) {
 
     const [formData, setFormData] = useState({
 		title: '',
@@ -97,6 +97,3 @@ const Form = ({item, setView}) => {
 
 }
 
-
-
-export default Form 

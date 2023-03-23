@@ -3,7 +3,7 @@ import { SaucesList } from './SaucesList';
 import { Items } from './Items'
 import { NavBar } from './NavBar';
 import { SingleItem } from './views/SingleItem';
-import Form from './Form'
+import { Form } from './Form'
 
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';

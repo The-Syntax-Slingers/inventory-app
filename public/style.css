@@ -81,7 +81,7 @@ button:hover {
   text-align: right;
 }
 
-.image-container {
+.item-list .image-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -106,4 +106,24 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* Single Item View */
+.single-item-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.single-item-view .image-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.single-item-view img {
+  max-height: 500px;
+}
+
+.buttons {
+  display: flex;
+
 }

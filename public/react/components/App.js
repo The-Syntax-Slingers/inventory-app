@@ -36,6 +36,11 @@ export const App = () => {
 			const response = await fetch(`${apiURL}/items/`);
 			const itemsData = await response.json();
 			setItems(itemsData)
+
+			// Set item categories
+			const categories = new Set(itemsData.map(c => c.category))
+			setitemCategories(categories)
+
 		} catch (err) {
 			console.error(err);
 		}
@@ -84,8 +89,7 @@ export const App = () => {
 			<NavBar links={{
 				home: setHome,
 				add: () => setView("add")
-			}}
-			/>
+			}} />
 			<Loader />
 		</main>
 	)

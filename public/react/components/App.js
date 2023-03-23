@@ -24,29 +24,26 @@ export const App = () => {
 		image: ""
 	}
 
-	const defaultView = {
-		page: "home",
-		items: [],
-		id: null,
-		item: null,
-		itemDraft: emptyDraft
-	}
-
-	const [view, setView] = useState(defaultView)
+	// Seperate view into their own state
+	const [view, setView] = useState("home")
+	const [items, setItems] = useState([])
+	const [singleItem, setSingleItem] = useState(null)
+	const [itemCategories, setitemCategories] = useState([])
 
 	//functions
-	async function fetchAndSetItems() {
+	async function fetchItems() {
 		try {
 			const response = await fetch(`${apiURL}/items/`);
 			const itemsData = await response.json();
-			setView({ ...defaultView, items: itemsData });
+			setItems(itemsData)
 		} catch (err) {
 			console.error(err);
 		}
 	}
 
-	function handleHomeClick() {
-		fetchAndSetItems()
+	function setHome() {
+		fetchItems();
+		setView("home")
 	}
 
 	function handleNewItemClick() {
@@ -64,18 +61,18 @@ export const App = () => {
 	}
 
 	useEffect(() => {
-		fetchAndSetItems();
+		setHome()
 	}, []);
 
 	// Loads page views
 	function Loader({ view }) {
-		switch (view.page) {
+		switch (view) {
 			case 'home': return (<>
-				<Items items={view.items} handleClick={handleItemClick} />
+				<Items items={items} handleClick={handleItemClick} />
 			</>);
 
 			case 'item': return (<>
-				<SingleItem item={view.item} backToHome={handleHomeClick} reloadItem={handleItemClick} />
+				<SingleItem item={item} backToHome={setHome} reloadItem={handleItemClick} />
 			</>);
 
 			case 'add': return (<>
@@ -87,7 +84,7 @@ export const App = () => {
 
 	return (
 		<main>
-			<NavBar links={{ home: handleHomeClick, add: handleNewItemClick }} />
+			<NavBar links={{ home: setHome, add: handleNewItemClick }} />
 			<Loader view={view} />
 		</main>
 	)

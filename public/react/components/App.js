@@ -41,6 +41,17 @@ export const App = () => {
 		}
 	}
 
+	async function viewItem(id) {
+		try {
+			const response = await fetch(`${apiURL}/items/${id}`);
+			const itemData = await response.json();
+			setSingleItem(itemData);
+			setView("item")
+		} catch (err) {
+			console.error(err);
+		}
+	}
+
 	function setHome() {
 		fetchItems();
 		setView("home")
@@ -68,11 +79,11 @@ export const App = () => {
 	function Loader() {
 		switch (view) {
 			case 'home': return (<>
-				<Items items={items} handleClick={handleItemClick} />
+				<Items items={items} viewItem={viewItem} />
 			</>);
 
 			case 'item': return (<>
-				<SingleItem item={item} backToHome={setHome} reloadItem={handleItemClick} />
+				<SingleItem item={singleItem} backToHome={setHome} reloadItem={viewItem} />
 			</>);
 
 			case 'add': return (<>

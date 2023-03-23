@@ -1,6 +1,6 @@
 import React from "react";
 
-export function NavBar({ view, navClicks }) {
+export function NavBar({ navClicks }) {
     return (<nav>
         <div className="app-logo" onClick={navClicks.home}>
             <span className="nav-item emoji">📇</span>

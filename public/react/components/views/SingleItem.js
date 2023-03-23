@@ -14,6 +14,7 @@ export function SingleItem({ item, backToHome, reloadItem }) {
         'Hat',
         'Pants',
         'Glasses',
+        "women's clothing"
     ];
 
     //this sets the form to contain all the data already there

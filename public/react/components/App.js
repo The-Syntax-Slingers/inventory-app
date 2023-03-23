@@ -45,6 +45,7 @@ export const App = () => {
 		setView("home")
 	}
 
+	// Onload
 	useEffect(() => {
 		setHome()
 	}, []);

@@ -3,7 +3,7 @@ import { SaucesList } from './SaucesList';
 import { Items } from './Items'
 import { NavBar } from './NavBar';
 import { SingleItem } from './views/SingleItem';
-import { Form } from './Form'
+//import Form  from './Form'
 
 // import and prepend the api url to any fetch calls
 import apiURL from '../api';
@@ -99,13 +99,13 @@ export const App = () => {
 					<SingleItem item={view.item} backToHome={handleHomeClick} reloadItem={handleItemClick} />
 				</>);
 			//add item logic
-			case 'add':
+			/*case 'add':
 				console.log("you are on the add page")
 				return (
 					<>
 						<Form item={view.itemDraft} setView={setView} />
 					</>
-				)
+				)*/
 		}
 	}
 	return (

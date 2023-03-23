@@ -56,7 +56,7 @@ export function NewItemForm() {
             </div>
             <div>
                 Description <br/>
-                <input placeholder='Item description' type='text' id='description' name='description' value={formData.description} onChange={handleChange} required/>
+                <input placeholder='Item description' wrap="soft" id='description' name='description' value={formData.description} onChange={handleChange} required />
             </div>
             <div>
                 Price <br/>

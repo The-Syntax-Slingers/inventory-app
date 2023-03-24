@@ -13,9 +13,6 @@ export function NavBar({ links }) {
             <a className="nav-item nav-link" onClick={links.add}>
                 Add New Item
             </a>
-            <a className="nav-item nav-link">
-                Cart
-            </a>
         </ul>
     </nav>);
 }

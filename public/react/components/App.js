@@ -62,7 +62,7 @@ export const App = () => {
 			</>);
 
 			case 'add': return (<>
-				<NewItemForm item={view.itemDraft} setView={setView} />
+				<NewItemForm backToHome={setHome} />
 			</>
 			)
 		}

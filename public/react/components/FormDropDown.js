@@ -14,8 +14,8 @@ export function DropDown({formData,handleChange}){
     ];
 
     return(<>
+        <label htmlFor='category'>Category </label>
         <br/>
-        <label htmlFor='category'>Category: </label>
         <select
         name='category'
         value={formData.category}

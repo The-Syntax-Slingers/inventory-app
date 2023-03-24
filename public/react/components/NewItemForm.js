@@ -4,7 +4,7 @@ import apiURL from '../api';
 import { DropDown } from './FormDropDown';
 
 
-export function NewItemForm() {
+export function NewItemForm({ backToHome }) {
 
     const [formData, setFormData] = useState({
 		title: '',
@@ -16,9 +16,11 @@ export function NewItemForm() {
 	})
 
     async function handleSubmit (event) {
-		event.preventDefault()
+        event.preventDefault()
         console.log(formData)
-
+        
+        if(!confirm("Confirm update?"))
+            return
 		const response = await fetch(`${apiURL}/items/`, {
 		method: 'POST',
 		headers: {
@@ -33,6 +35,8 @@ export function NewItemForm() {
 			})
 		})
 		const data = await response.json()
+        backToHome()
+    
 	}
 
     function handleChange (event){
@@ -63,7 +67,6 @@ export function NewItemForm() {
                 <input placeholder='Price' type='number' id='price' name='price' value={formData.price} onChange={handleChange} required/>
             </div>
             <div>
-                Category <br/>
                 <DropDown id='category' name='category' formData={formData} handleChange={handleChange}/>
             </div>
             <div>

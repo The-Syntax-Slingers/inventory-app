@@ -60,54 +60,57 @@ export function EditItemForm({item,reloadItem,setFormVisible}){
     return (
         <>
                 <form onSubmit={handleSubmit}>
-                    <br/>
-                    <label htmlFor="title">Title: </label>
-                    <input
-                        value={formData.title}
-                        onChange={handleChange}
-                        type="text"
-                        name="title"
-                    ></input>
-
-                    <br/>
-                    <label htmlFor="price" >Price: </label>
-                    <input
-                        value={formData.price}
-                        onChange={handleChange}
-                        type="number"
-                        min="0"
-                        step=".01"
-                        name="price"
-                    ></input>
-
-                    <br/>
-                    <label htmlFor="description" >Description: </label>
-                    <input
-                        value={formData.description}
-                        onChange={handleChange}
-                        type="textarea"
-                        rows="5"
-                        columns="10"
-                        name="description"
-                    ></input>
-
-                    <br/>
-                    <label htmlFor="image" >Image: </label>
-                    <input
-                        value={formData.image}
-                        onChange={handleChange}
-                        type="text"
-                        name="image"
-                    ></input>
-
-                    <DropDown formData={formData} handleChange={handleChange} />
-
-                    <br/>
-                    <label htmlFor="submit" >Submit: </label>
-                    <input type="submit" name="submit"></input>
-
-                    <br/>
-                    <button onClick={(event) => handleCancel(event)} name="cancel">Cancel</button>                   
+                    <div>
+                        <label htmlFor="title">Title </label>
+                        <br/>
+                        <input
+                            value={formData.title}
+                            onChange={handleChange}
+                            type="text"
+                            name="title"
+                        ></input>
+                    </div>
+                    <div>
+                        <label htmlFor="price" >Price </label>
+                        <br/>
+                        <input
+                            value={formData.price}
+                            onChange={handleChange}
+                            type="number"
+                            min="0"
+                            step=".01"
+                            name="price"
+                        ></input>
+                    </div>
+                    <div>
+                        <label htmlFor="description" >Description </label>
+                        <br/>
+                        <input
+                            value={formData.description}
+                            onChange={handleChange}
+                            type="textarea"
+                            rows="5"
+                            columns="10"
+                            name="description"
+                        ></input>
+                    </div>
+                    <div>
+                        <label htmlFor="image" >Image </label>
+                        <br/>
+                        <input
+                            value={formData.image}
+                            onChange={handleChange}
+                            type="text"
+                            name="image"
+                        ></input>
+                    </div>
+                    <div>
+                        <DropDown formData={formData} handleChange={handleChange} />
+                    </div>
+                    
+                        <input type="submit" name="submit"></input>
+                        
+                        <button onClick={(event) => handleCancel(event)} name="cancel">Cancel</button>                   
                 </form>
             </>
     );
